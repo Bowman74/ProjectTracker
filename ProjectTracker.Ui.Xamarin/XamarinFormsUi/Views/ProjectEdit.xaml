@@ -3,17 +3,19 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="XamarinFormsUi.Views.ProjectEdit"
              xmlns:csla="clr-namespace:Csla.Xaml;assembly=Csla.Xaml"
+             xmlns:controls="clr-namespace:XamarinFormsUi.Controls"
              Title="Project Details">
   <ContentPage.ToolbarItems>
     <ToolbarItem Name="Save" Command="{Binding SaveItemCommand}"/>
     <ToolbarItem Name="Assign" Command="{Binding AssignResourceCommand}"/>
   </ContentPage.ToolbarItems>
   <Grid>
-        <csla:PropertyInfo x:Name="NameInfo" Path="Model.Name"/>
+        <!--<controls:ExtendedPropertyInfo x:Name="NameExInfo" BindingContext="{Binding Model}" Path="Name" />-->
+        <csla:PropertyInfo x:Name="NameInfo" BindingContext="{Binding Model}" Path="Name"/>
         <TableView Intent="Form">
       <TableView.Root>
         <TableSection Title="Project">
-          <EntryCell Label="Name" Text="{Binding Model.Name}"/>
+          <!--<EntryCell Label="Name" Text="{Binding Model.Name}"/>-->
           <EntryCell Label="Description" Text="{Binding Model.Description}"/>
         </TableSection>
       </TableView.Root>
