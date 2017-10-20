@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="XamarinFormsUi.Views.ProjectEdit"
@@ -10,13 +10,15 @@
     <ToolbarItem Name="Assign" Command="{Binding AssignResourceCommand}"/>
   </ContentPage.ToolbarItems>
   <Grid>
-        <!--<controls:ExtendedPropertyInfo x:Name="NameExInfo" BindingContext="{Binding Model}" Path="Name" />-->
-        <csla:PropertyInfo x:Name="NameInfo" BindingContext="{Binding Model}" Path="Name"/>
-        <TableView Intent="Form">
+  <!--<controls:ExtendedPropertyInfo x:Name="NameExInfo" BindingContext="{Binding Model}" Path="Name" />-->
+  <csla:PropertyInfo x:Name="NameInfo" BindingContext="{Binding Model}" Path="Name"/>
+  <csla:PropertyInfo x:Name="DescriptionInfo" BindingContext="{Binding Model}" Path="Description"/>
+  <TableView Intent="Form">
       <TableView.Root>
         <TableSection Title="Project">
-          <!--<EntryCell Label="Name" Text="{Binding Model.Name}"/>-->
-          <EntryCell Label="Description" Text="{Binding Model.Description}"/>
+          <EntryCell Label="Name" BindingContext="{x:Reference NameInfo}" Text="{Binding Value, Mode=TwoWay}" />
+          <EntryCell Label="Error" BindingContext="{x:Reference NameInfo}" Text="{Binding RuleDescription}"/>          
+          <EntryCell Label="Description" BindingContext="{x:Reference DescriptionInfo}" Text="{Binding Value, Mode=TwoWay}"/>
         </TableSection>
       </TableView.Root>
     </TableView>
